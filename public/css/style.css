@@ -313,3 +313,11 @@ body {
         width: 100%;
     }
 }
+
+.developer p {
+    transition: transform 0.3s ease;
+}
+
+.developer:hover p {
+    transform: translateX(10px);
+}
