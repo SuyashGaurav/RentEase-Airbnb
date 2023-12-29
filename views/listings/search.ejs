@@ -1,0 +1,117 @@
+<% layout('layouts/boilerplate') %>
+<body>
+  <div id="filters">
+    <div class="filter-container">
+      <div class="filter">
+        <a href="/listings/search?searchItem=villa">
+          <div><i class="fa-solid fa-bed"></i></div>
+          <p>Rooms</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=cit">
+          <div><i class="fa-solid fa-mountain-city"></i></div>
+          <p>Iconic Cities</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=beach">
+          <div><i class="fa-solid fa-umbrella-beach"></i></div>
+          <p>Beach</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=pool">
+          <div><i class="fa-solid fa-person-swimming"></i></div>
+          <p>Amazing Pools</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=pool">
+          <div><i class="fa-solid fa-tents"></i></div>
+          <p>Camping</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=lake">
+          <div><i class="fa-solid fa-water"></i></div>
+          <p>Lakes</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=villa">
+          <div><i class="fa-solid fa-city"></i></div>
+          <p>Tiny homes</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=farm">
+          <div><i class="fa-solid fa-tractor"></i></div>
+          <p>Farms</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=snow">
+        <div><i class="fa-regular fa-snowflake"></i></div>
+        <p>Arctic</p></a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=beach">
+        <div><i class="fa-solid fa-sailboat"></i></div>
+        <p>Boats</p></a>
+      </div>
+      <div class="filter">
+        <a href="/listings/search?searchItem=igloo">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Domes</p></a>
+      </div>
+    </div>
+    <div class="tax-toggle">
+      <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+      </div>
+    </div>
+  </div>
+  
+      <% if(searchListing.length) {%>
+      <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-4">
+          <% for(let listing of searchListing){ %>
+              <a href="/listings/<%= listing._id %>" class="listing-link">
+              <div class="card listing-card">
+                  <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image"  style="height: 18rem;">
+                  <div class="card-img-overlay"></div>
+                  <div class="card-body">
+                    <p class="card-text">
+                     <b> <%= listing.title %> <br> </b>
+                      <b>&#8377;<%= listing.price.toLocaleString("en-IN") %></b> /night
+                      <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
+                    </p>
+                  </div>
+              </div>
+              </a>
+              <% } %>
+      </div>
+      <% } %>
+      <% if(!searchListing.length) {%>
+        <div class="no-results mt-3">
+            <h2>No results found for "<%= searchItem %>"</h2>
+            <p>Try adjusting your search criteria or explore other listings. Search for different location & country!</p>
+        </div>
+      <% } %>
+  </body>
+  
+  <script>
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault")
+    taxSwitch.addEventListener("click", ()=>{
+      let taxInfo = document.getElementsByClassName("tax-info")
+      for(let info of taxInfo) {
+        if(info.style.display != "inline"){
+          info.style.display = "inline";
+        } else {
+          info.style.display = "none";
+        }
+      }
+    })
+  </script>
+</body>

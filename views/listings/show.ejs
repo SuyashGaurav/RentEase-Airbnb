@@ -1,29 +1,45 @@
 <% layout('layouts/boilerplate') %>
+<script>
+    let mapToken = "<%= process.env.MAP_TOKEN %>"
+    let long = "<%= coordinates.longitude %>"
+    let lat = "<%= coordinates.latitude %>"
+</script>
 <body>
-    <div class="listings-cards mt-4">
+    <div class="container mt-4">
         <div>
             <h3><%= listing.title %></h3>
         </div>
         <div>
-        <div class="card show-card listing-card" style="width: 20rem;">
-            <img src="<%= listing.image %>" class="card-img-top" alt="listing_image" style="height: 20rem; width:38rem !important;">
+        <div class="card show-card listing-card">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
             <div class="card-body">
-            <p class="card-text mt-2" style="width: 40rem !important;">
-                <%= listing.description %> <br>
-                &#8377;<%= listing.price.toLocaleString("en-IN") %> <br>
-                <%= listing.location %> <br>
-                <%= listing.country %> <br>
+            <p class="card-text mt-2 mb-1">
+                <b>Owned by:</b> <%= listing.owner.username %> &nbsp; &nbsp;
+                <a href="mailto:<%= listing.owner.email %>" style="color: black;">
+                    <i class="fa-regular fa-envelope"></i> <i><%= listing.owner.email %></i>
+                </a><br></p>
+            <p class="card-text">
+                <b>Description</b>: <%= listing.description %> <br>
+            </p>
+            <p class="card-text mb-1">
+                <b>Price: </b>&#8377;<%= listing.price.toLocaleString("en-IN") %> <br>
+                <b>Location:</b> <%= listing.location %> <br>
+                <b>Country:</b> <%= listing.country %> <br>
             </p>
             </div>
         </div>
         </div>
+
+        <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
         <div class="btns">
             <a href="/listings/<%= listing._id %>/edit"  class="btn btn-dark">Edit</a>
             <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
                 <button class="btn btn-dark offset-5 add-btn">Delete</button>
             </form>
         </div>
-        <div class="mb-5" style="width: 40rem;">
+        <% } %>
+
+        <div class="mb-5">
             <hr>
             <h4>Leave a Review</h4>
             <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
@@ -45,29 +61,41 @@
                     <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
                     <div class="invalid-feedback">Please add your experience</div>
                 </div>
-                <button class="btn btn-outline-dark offset-10 mt-3">Submit</button>
+                <button class="btn btn-outline-dark mt-3">Submit</button>
             </form>
             </div>
+ 
+            <% if(listing.reviews.length){ %>
             <hr>
             <div>
-            <b><p>All Reviews</p></b>
+            <h4>All Reviews</h4>
             <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
             <% for(let review of listing.reviews){ %>
-                <div class="card ms-3 mb-3">
+                <div class="card ms-2 mb-3">
                     <div class="card-header">
-                        <h5 class="card-title">Jane Doe</h5>
+                        <h5 class="card-title">@<%= review.author.username %></h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary"><%= review.created_at.toString().split(" ").slice(0, 4).join(" ") %></h6>
                     </div>
                     <div class="card-body">
                         <p class="card-text"><% for(let i=0; i<review.rating; i++) { %><i class="fa-solid fa-star review-star"></i> <% } %></p>
                         <p class="card-text"><%= review.comment %></p>
+                        <% if(currUser && currUser._id.equals(review.author._id)){ %>
                         <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post" class="mb-3">
                             <button class="btn btn-outline-danger">Delete</button>
                         </form>
+                        <% } %>
                     </div>
                 </div>
             <% } %>
             </div>
         </div>
+        <% } %>
+        <hr>
+        <div class="row mb-5">
+            <h4>Where you'll be</h4>
+            <p class="mt-2 mb-3"><%= listing.location %>, <%= listing.country %></p>
+            <div id="map"></div>
+        </div>
     </div>
 </body>
+<script src="/js/map.js"></script>
