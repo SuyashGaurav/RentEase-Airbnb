@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 const reviewSchema = new mongoose.Schema({
     comment:{
         type: String,
-        maxLength: 50
+        maxLength: 140
     },
     rating: {
         type: Number,
@@ -14,6 +14,10 @@ const reviewSchema = new mongoose.Schema({
     created_at: {
         type: Date,
         default: Date.now()
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 

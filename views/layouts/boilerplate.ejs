@@ -10,11 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="https://static-00.iconduck.com/assets.00/airbnb-icon-1903x2048-3h4731uj.png">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
     <title>Airbnb</title>
 </head>
 <body>
     <%- include("../includes/navbar.ejs") %>
     <div class="container">
+        <%- include("../includes/flash.ejs") %>
         <%- body %>
     </div>
     <%- include("../includes/footer.ejs") %>

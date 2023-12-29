@@ -1,69 +1,30 @@
 import express from "express"
 import { wrapAsync } from "../utils/wrapAsync.js"
-import { listingSchema } from "../schema.js"
-import { ExpressError } from "../utils/ExpressError.js"
+import { isLoggedIn, isOwner, validateListing } from "../middleware.js"
+import { listingController } from "../controllers/listing.js"
+import multer from "multer"
+import { storage } from "../cloudConfig.js"
 import { Listing } from "../models/listings.js"
+const upload = multer({storage})
 
 const router = express.Router()
 
-const validateListing = (req, res, next) =>{  //server side validation (like handling postman req)
-    let {error} = listingSchema.validate(req.body)
-    if(error){
-        throw new ExpressError(400, error)
-    }else{
-        next()
-    }
-}
-
-//Index Route
-router.get("/", wrapAsync(async(req, res, next)=>{
-    let allListings = await Listing.find()
-    res.render("listings/index.ejs", {allListings})
-})
-)
+router.route("/")        //Index Route
+    .get(wrapAsync(listingController.index))
+    .post(isLoggedIn, upload.single('listing[image]'), validateListing, wrapAsync(listingController.createListing))   //Create Route
 
 //New and Create Route         //IMP: keep "listings/new"   route above   "listings/:id" so that new will not be treated as id"
-router.get("/new", (req, res)=>{
-    res.render("listings/new.ejs")
-})
+router.get("/new", isLoggedIn, listingController.renderNewForm)
 
-router.post("/", validateListing, wrapAsync(async(req, res, next)=>{
-    let listing = new Listing(req.body.listing)
-    await listing.save()
-    res.redirect("/listings")
-})
-)
+//Search route
+router.get("/search", wrapAsync(listingController.searchListing))
 
-//Show Route
-router.get("/:id", wrapAsync(async(req, res)=>{
-    let {id} = req.params
-    const listing = await Listing.findById(id).populate("reviews")
-    res.render("listings/show.ejs", {listing})
-})
-)
+router.route("/:id") 
+    .get(wrapAsync(listingController.showListing))        //Show Route
+    .put(isOwner, isLoggedIn, upload.single('listing[image]'), validateListing, wrapAsync(listingController.updateListing)) //Update route
+    .delete(isOwner, isLoggedIn, wrapAsync(listingController.destroyListing))  //Delete Route
 
 //Edit and Update route
-router.get("/:id/edit", wrapAsync(async(req, res)=>{
-    let {id} = req.params
-    let listing = await Listing.findById(id)
-    res.render("listings/edit.ejs", {listing})
-})
-)
+router.get("/:id/edit", isOwner, isLoggedIn, wrapAsync(listingController.renderEditForm))
 
-router.put("/:id", validateListing, wrapAsync(async(req, res)=>{
-    let {id} = req.params
-    let formListing = req.body.listing
-    await Listing.findByIdAndUpdate(id, formListing, {runValidators: true})
-    res.redirect(`/listings/${id}`)
-})
-)
-
-//Delete Route
-router.delete("/:id", wrapAsync(async(req, res)=>{
-    let {id} = req.params
-    await Listing.findByIdAndDelete(id)
-    res.redirect("/listings")
-})
-)
-
-export const listings = router
+export const listingRouter = router
