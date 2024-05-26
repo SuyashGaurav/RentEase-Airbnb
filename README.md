@@ -5,13 +5,13 @@
 </div>
 
 ## Project Description
-- WanderLust Airbnb Clone is a full-stack web application built using HTML, CSS, EJS, Node.js, Express, and MongoDB.
+- WanderLust Airbnb Clone is a full-stack web application built using HTML, CSS, EJS, Node.js, Express, and MongoDB that connects property owners looking to rent their property with those who are seeking accomodations.
 - The project follows the MVC (Model-View-Controller) framework for organizing code and ensuring a scalable and maintainable structure.
 
 - You can access the live demo [here](https://wanderlust-airbnb-suyash.onrender.com/listings).
 
 ## Deployment
-The project is deployed on Render and can be accessed live at [link](https://wanderlust-airbnb-suyash.onrender.com/listings).
+The project is deployed on Render and can be accessed live at [](https://wanderlust-airbnb-suyash.onrender.com/listings).
 
 ## Features
 - **CRUD Operations**: Users can perform Create, Read, Update, and Delete operations on listings. Add, edit, and delete functionalities are available to manage property listings.
