@@ -11,7 +11,7 @@
 - You can access the live demo [here](https://suyash-gaurav-rent-ease.onrender.com/listings).
 
 ## Deployment
-The project is deployed on Render and can be accessed live at [https://wanderlust-airbnb-suyash.onrender.com/listings](https://suyash-gaurav-rent-ease.onrender.com/listings).
+The project is deployed on Render and can be accessed live at [https://suyash-gaurav-rent-ease.onrender.com/listings](https://suyash-gaurav-rent-ease.onrender.com/listings).
 
 
 <div>
