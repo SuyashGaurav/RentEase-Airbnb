@@ -13,7 +13,7 @@ const signUp = async(req, res)=>{
             if(err){
                 return next(err)
             }
-            req.flash("success", "Welcome to WanderLust")
+            req.flash("success", "Welcome to RentEase")
             res.redirect("/listings")
         })
     }catch(err){  //if account already exists
@@ -27,7 +27,7 @@ const renderLoginForm = (req, res)=>{
 }
 
 const login = async(req, res)=>{
-    req.flash("success", "Welcome back to WanderLust!")
+    req.flash("success", "Welcome back to RentEase!")
     let redirectUrl = res.locals.redirectUrl || "/listings"
     res.redirect(redirectUrl)
 }
