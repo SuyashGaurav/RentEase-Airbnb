@@ -398,7 +398,7 @@ let sampleListing = [
     }
 ];
 sampleListing = sampleListing.map((data)=>{
-  return({...data, owner: "658c09d936de08caa0f56dbe"})
+  return({...data, owner: "658e3355e1edb6ed6c48568c"})
 })
 
 export const sampleListings = sampleListing

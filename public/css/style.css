@@ -30,33 +30,126 @@ body {
 }
 
 /* Footer */
-.f-info {
-    display: flex;
-    height: 8rem;
-    background-color: #ebebeb;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+footer {
+    background-color: #f7f7f7;
+    padding: 2rem 0;
+    border-top: 1px solid #ebebeb;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
     text-align: center;
 }
 
-.f-info-links, .f-info-socials {
-    width: 100%;
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
 }
 
-.f-info-socials i {
-    margin-right: 1rem;
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-column h4 {
     font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #444;
 }
 
-.f-info-links a {
-    text-decoration: none;
-    color: #222222;
+.footer-column ul {
+    list-style: none;
+    padding: 0;
 }
 
-.f-info-links a:hover {
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+    color:#888;
+}
+
+.footer-column ul li:hover {
     text-decoration: underline;
 }
+
+.footer-column form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-column form input[type="email"] {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.footer-column form button {
+    /* padding: 0.5rem 1rem; */
+    /* background-color:#e71b29; */
+    /* color: white; */
+    /* border: none; */
+    /* border-radius: 4px; */
+    /* cursor: pointer; */
+}
+
+.footer-column form button:hover {
+    background-color:#e71b29;
+}
+
+.footer-socials {
+    margin-bottom: 1rem;
+}
+
+.footer-socials a {
+    margin: 0 0.5rem;
+    color: #444;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    color:#e71b29;
+}
+
+.footer-info {
+    margin-bottom: 1rem;
+    color: #888;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-links p {
+    margin: 0 1rem;
+    color:#222222;
+}
+
+.footer-links p:hover {
+    text-decoration: underline;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-links a:hover p {
+    text-decoration: underline;
+}
+
+
+
 
 /* Cards */
 .listing-card {
@@ -312,4 +405,12 @@ body {
     .filter-container{
         width: 100%;
     }
+}
+
+.developer p {
+    transition: transform 0.3s ease;
+}
+
+.developer:hover p {
+    transform: translateX(10px);
 }
