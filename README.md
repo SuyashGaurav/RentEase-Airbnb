@@ -17,10 +17,12 @@ The project is deployed on Render and can be accessed live at [https://suyash-ga
 <div>
   <h2><img src="https://github.com/SuyashGaurav/WanderLust-Airbnb-Clone/assets/102952185/2a0317ea-4b6a-42d8-98a4-c76b855bfabf" width="35" height="35"> Features</h2>
 </div>
-- **CRUD Operations**: Users can perform Create, Read, Update, and Delete operations on listings. Add, edit, and delete functionalities are available to manage property listings.
-- **Authentication and Authorization**: Secure user authentication and authorization mechanisms are implemented. Users can sign up for an account, log in, and access features based on their roles.
-- **Reviews**: Users can add and delete reviews for property listings, providing valuable feedback to the listing.
-- **Map Location Integration:**  The application integrates Mapbox to display the location of property listings on an interactive map.
+<ul>
+<li> CRUD Operations: Users can perform Create, Read, Update, and Delete operations on listings. Add, edit, and delete functionalities are available to manage property listings.</li>
+<li>Authentication and Authorization: Secure user authentication and authorization mechanisms are implemented. Users can sign up for an account, log in, and access features based on their roles.</li>
+<li>Reviews: Users can add and delete reviews for property listings, providing valuable feedback to the listing.</li>
+<li>Map Location Integration:**  The application integrates Mapbox to display the location of property listings on an interactive map.</li>
+</ul>
 
 ## Acknowledgments
 - Font Awesome: Used for scalable vector icons.
