@@ -1,8 +1,9 @@
 # [WanderLust - Airbnb Clone](https://wanderlust-airbnb-suyash.onrender.com/listings)
 
 <div style="display: flex;">
-<img width="960" alt="image" src="https://github.com/SuyashGaurav/WanderLust-Airbnb-Clone/assets/102952185/f74f62f0-33b9-4fa5-91b1-eebda2a96706">
+<img width="960" alt="image" src="https://github.com/SuyashGaurav/WanderLust-Airbnb-Clone/assets/102952185/7d79d1f7-e939-4e86-9174-b021b2c3276b">>
 </div>
+
 
 ## Project Description
 - WanderLust Airbnb Clone is a full-stack web application built using HTML, CSS, EJS, Node.js, Express, and MongoDB that connects property owners looking to rent their property with those who are seeking accomodations.
