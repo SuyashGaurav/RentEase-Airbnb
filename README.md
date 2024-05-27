@@ -1,4 +1,4 @@
-# [RentEase - Airbnb](https://wanderlust-airbnb-suyash.onrender.com/listings)
+# [RentEase - Airbnb](https://suyash-gaurav-rent-ease.onrender.com/listings)
 
 <div style="display: flex;">
 <img width="960" alt="image" src="https://github.com/SuyashGaurav/WanderLust-Airbnb-Clone/assets/102952185/9c2eb97e-c313-4bc2-9ef7-e1907b35ddc3">
@@ -8,10 +8,10 @@
 - RentEase Airbnb is a full-stack web application built using HTML, CSS, EJS, Node.js, Express, and MongoDB that connects property owners looking to rent their property with those who are seeking accommodations.
 - The project follows the MVC (Model-View-Controller) framework for organizing code and ensuring a scalable and maintainable structure.
 
-- You can access the live demo [here](https://wanderlust-airbnb-suyash.onrender.com/listings).
+- You can access the live demo [here](https://suyash-gaurav-rent-ease.onrender.com/listings).
 
 ## Deployment
-The project is deployed on Render and can be accessed live at [https://wanderlust-airbnb-suyash.onrender.com/listings](https://wanderlust-airbnb-suyash.onrender.com/listings).
+The project is deployed on Render and can be accessed live at [https://wanderlust-airbnb-suyash.onrender.com/listings](https://suyash-gaurav-rent-ease.onrender.com/listings).
 
 
 <div>
